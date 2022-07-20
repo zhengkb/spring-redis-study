@@ -52,7 +52,8 @@ public class EventBus {
         }
         for (Method method : methods) {
             try {
-                method.invoke(null, event);
+                Class<?> declaringClass = method.getDeclaringClass();
+                method.invoke(declaringClass.newInstance(), event);
             } catch (Exception e) {
                 e.printStackTrace();
             }

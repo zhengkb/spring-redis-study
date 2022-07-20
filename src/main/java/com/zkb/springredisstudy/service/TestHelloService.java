@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class TestHelloService {
 
     @Subscribe
-    public static void testEvent(TestEvent event) {
+    public void testEvent(TestEvent event) {
         System.out.println(event.getInfo());
     }
 
