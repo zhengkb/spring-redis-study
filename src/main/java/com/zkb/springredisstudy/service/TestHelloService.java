@@ -9,7 +9,7 @@ public class TestHelloService {
 
     @Subscribe
     public void testEvent(TestEvent event) {
-        System.out.println(event.getInfo());
+        System.out.println("test1:" + event.getInfo());
     }
 
 }
