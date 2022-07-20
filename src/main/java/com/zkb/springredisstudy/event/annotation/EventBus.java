@@ -61,15 +61,24 @@ public class EventBus {
             return;
         }
         //use thread to resolve event
-        executorService.submit(() -> {
-            for (Method method : methods) {
-                try {
-                    Class<?> declaringClass = method.getDeclaringClass();
-                    method.invoke(declaringClass.newInstance(), event);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        for (Method method : methods) {
+            if (executorService != null) {
+                executorService.submit(() -> {
+                    invokeMethod(method, event);
+                });
+            } else {
+                invokeMethod(method, event);
             }
-        });
+        }
     }
+
+    private static void invokeMethod(Method method, BaseEvent event) {
+        Class<?> declaringClass = method.getDeclaringClass();
+        try {
+            method.invoke(declaringClass.newInstance(), event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
