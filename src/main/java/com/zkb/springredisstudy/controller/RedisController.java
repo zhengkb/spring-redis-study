@@ -4,14 +4,12 @@ import com.zkb.springredisstudy.event.annotation.EventBus;
 import com.zkb.springredisstudy.event.annotation.TestEvent;
 import com.zkb.springredisstudy.event.scan.SimpleClassScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.locks.Lock;
 
 @RestController
@@ -21,6 +19,8 @@ public class RedisController {
     private RedisLockRegistry redisLockRegistry;
     @Autowired
     private SimpleClassScan simpleClassScan;
+    @Autowired
+    private ApplicationContext applicationContext;
 
 
     @RequestMapping("/redisLock")
@@ -40,6 +40,7 @@ public class RedisController {
 
     @RequestMapping("/test")
     public String test() {
+        applicationContext.getBean("testHelloController");
         TestEvent testEvent = new TestEvent();
         testEvent.setInfo("hello world");
         EventBus.postEvent(testEvent);
