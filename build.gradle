@@ -26,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation group: 'org.redisson', name: 'redisson', version: '3.17.4'
     implementation group: 'org.springframework.integration', name: 'spring-integration-redis', version: '5.5.10'
 //    implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-discovery'
     compileOnly 'org.projectlombok:lombok'
