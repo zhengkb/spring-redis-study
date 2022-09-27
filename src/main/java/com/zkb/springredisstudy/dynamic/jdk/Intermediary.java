@@ -11,8 +11,8 @@ public class Intermediary implements Person {
 
     @Override
     public void rentHouse() {
-        System.out.println("中介：" + name + "确定预算，看房");
+        System.out.println("agent：" + name + "确定预算，看房");
         tenant.rentHouse();
-        System.out.println("中介：" + name + "看完房");
+        System.out.println("agent：" + name + "看完房");
     }
 }
