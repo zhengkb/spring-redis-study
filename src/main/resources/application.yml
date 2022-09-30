@@ -4,3 +4,8 @@ spring:
   redis:
     port: 6379
     host: 39.103.78.212
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: rwuser
+    password: i.Ub.)DV7uXgWo%*x)
+    url: jdbc:mysql://192.168.135.158:3306/game_fish_h5?useSSL=false&serverTimezone=Asia/Shanghai
