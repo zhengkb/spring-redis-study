@@ -17,6 +17,10 @@ public class TestAnnotation {
     @Autowired
     private GameRoleMapper gameRoleMapper;
 
+    public void execute1(Long uid, String value) {
+        execute(uid, value);
+    }
+
     @Transactional()
     public void execute(Long uid, String value) {
         User user = new User(uid, value);
