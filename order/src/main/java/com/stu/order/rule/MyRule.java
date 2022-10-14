@@ -7,15 +7,18 @@ import com.netflix.loadbalancer.Server;
 import java.util.List;
 
 public class MyRule extends AbstractLoadBalancerRule {
-    @Override
-    public void initWithNiwsConfig(IClientConfig clientConfig) {
 
-    }
+
 
     @Override
     public Server choose(Object key) {
         List<Server> allServers = getLoadBalancer().getAllServers();
         System.out.println(allServers.toArray());
-        return null;
+        return allServers.get(0);
+    }
+
+    @Override
+    public void initWithNiwsConfig(IClientConfig clientConfig) {
+
     }
 }

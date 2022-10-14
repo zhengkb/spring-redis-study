@@ -2,12 +2,13 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    fetch-registry: true
 server:
-  port: 8764
+  port: 8769
 spring:
   application:
     name: order
 ribbon:
-  eureka:
+  okhttp:
     enabled: true
+#  restclient:
+#    enabled: true
