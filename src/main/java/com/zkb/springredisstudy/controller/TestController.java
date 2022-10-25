@@ -32,7 +32,7 @@ public class TestController {
 
     @GetMapping("/annotation")
     public void testAnnotation(Long uid, String value) {
-        testAnnotation.execute(uid, value);
+        testAnnotation.execute1(uid, value);
     }
 
     @GetMapping("/kafka")

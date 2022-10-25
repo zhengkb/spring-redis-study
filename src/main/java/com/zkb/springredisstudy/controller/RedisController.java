@@ -4,6 +4,8 @@ import com.zkb.springredisstudy.event.annotation.EventBus;
 import com.zkb.springredisstudy.event.annotation.TestEvent;
 import com.zkb.springredisstudy.event.scan.SimpleClassScan;
 import com.zkb.springredisstudy.service.RedisService;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.integration.redis.util.RedisLockRegistry;
@@ -25,6 +27,8 @@ public class RedisController {
     private ApplicationContext applicationContext;
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private RedissonClient redissonClient;
 
 
     @RequestMapping("/redisLock")
@@ -38,6 +42,8 @@ public class RedisController {
                 lock.unlock();
             }).start();
         }
+        RLock lock1 = redissonClient.getLock("redissson:lock");
+        lock1.lock();
         return "ok";
     }
 
