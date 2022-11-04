@@ -1,4 +1,4 @@
-package com.zkb.springredisstudy.dynamic.jdk;
+package com.zkb.springredisstudy.dynamic.jdk.exp1;
 
 import lombok.AllArgsConstructor;
 

@@ -3,6 +3,7 @@ package com.zkb.springredisstudy.controller;
 import com.zkb.springredisstudy.event.annotation.EventBus;
 import com.zkb.springredisstudy.event.annotation.TestEvent;
 import com.zkb.springredisstudy.event.scan.SimpleClassScan;
+import com.zkb.springredisstudy.redis.IdCreate;
 import com.zkb.springredisstudy.service.RedisService;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -29,6 +30,9 @@ public class RedisController {
     private RedisService redisService;
     @Autowired
     private RedissonClient redissonClient;
+
+    @Autowired
+    private IdCreate idCreate;
 
 
     @RequestMapping("/redisLock")
@@ -66,5 +70,10 @@ public class RedisController {
     @RequestMapping("/getValue")
     public List<String> getValue(String key, int index) {
         return redisService.getRedisValue(key, index);
+    }
+
+    @RequestMapping("/createId")
+    public Long createId(String item){
+        return idCreate.getRedisIncrementId(item);
     }
 }
