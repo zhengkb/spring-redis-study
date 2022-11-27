@@ -3,7 +3,8 @@ server:
 spring:
   redis:
     port: 6379
-    host: 39.103.78.212
+    host: 192.168.217.128
+#    host: 39.103.78.212
   datasource:
     url: jdbc:mysql://39.103.78.212:3306/cq_data?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root

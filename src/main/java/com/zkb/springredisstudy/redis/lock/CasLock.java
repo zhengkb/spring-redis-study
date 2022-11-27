@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 
 public class CasLock {
 
-    private static String ip = "39.103.78.212";
+    private static String ip = "192.168.217.128";
     private static int port = 6379;
 
     public static void main(String[] args) {
