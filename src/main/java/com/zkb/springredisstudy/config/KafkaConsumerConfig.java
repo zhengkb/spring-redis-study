@@ -38,7 +38,7 @@ public class KafkaConsumerConfig {
     @Bean
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.217.128:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.1.110:9092");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return props;
