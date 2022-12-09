@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ABC3 {
+public class    ABC3 {
 
     private static final Lock lock = new ReentrantLock();
     private static Condition A = lock.newCondition();

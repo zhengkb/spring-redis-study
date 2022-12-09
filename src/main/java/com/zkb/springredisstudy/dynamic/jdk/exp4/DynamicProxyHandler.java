@@ -1,4 +1,4 @@
-package com.zkb.springredisstudy.dynamic.jdk.exp3;
+package com.zkb.springredisstudy.dynamic.jdk.exp4;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -10,15 +10,15 @@ public class DynamicProxyHandler implements InvocationHandler {
 
     public Object getProxy(Object target) {
         this.target = target;
-        Object proxyInstance = Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
-        return proxyInstance;
+        Object instance = Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
+        return instance;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("附加执行");
+        System.out.println("执行之前");
         Object invoke = method.invoke(target, args);
-        System.out.println("附加执行之后");
+        System.out.println("执行之后");
         return invoke;
     }
 }
