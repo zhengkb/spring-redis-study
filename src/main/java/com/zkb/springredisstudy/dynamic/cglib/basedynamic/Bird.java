@@ -1,4 +1,4 @@
-package com.zkb.springredisstudy.dynamic.basedynamic;
+package com.zkb.springredisstudy.dynamic.cglib.basedynamic;
 
 
 public class Bird {

@@ -19,11 +19,25 @@ public class ReadWriteLock {
                 System.out.println(Thread.currentThread().getName() + " 释放锁");
             }
         }).start();
+
+        new Thread(() -> {
+            readLock.lock();
+            try {
+                System.out.println(Thread.currentThread().getName() + " 得到锁");
+                Thread.sleep(3000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                readLock.unlock();
+                System.out.println(Thread.currentThread().getName() + " 释放锁");
+            }
+        }).start();
+
         ReentrantReadWriteLock.WriteLock writeLock = readWriteLock.writeLock();
         new Thread(() -> {
             writeLock.lock();
             try {
-                System.out.println(Thread.currentThread().getName() + "  得到锁");
+                System.out.println(Thread.currentThread().getName() + " 得到锁");
                 Thread.sleep(3000);
             } catch (Exception e) {
                 e.printStackTrace();

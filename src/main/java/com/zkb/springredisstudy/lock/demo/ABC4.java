@@ -23,9 +23,9 @@ public class ABC4 {
 
     public static void printA() {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 100000; i++) {
                 A.acquire();
-                System.out.println("A");
+                System.out.print("A");
                 B.release();
             }
         } catch (Exception e) {
@@ -35,9 +35,9 @@ public class ABC4 {
 
     public static void printB() {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 100000; i++) {
                 B.acquire();
-                System.out.println("B");
+                System.out.print(" B");
                 C.release();
             }
         } catch (Exception e) {
@@ -47,9 +47,9 @@ public class ABC4 {
 
     public static void printC() {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 100000; i++) {
                 C.acquire();
-                System.out.println("C");
+                System.out.println(" C");
                 A.release();
             }
         } catch (Exception e) {

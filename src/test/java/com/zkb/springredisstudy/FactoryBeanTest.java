@@ -17,13 +17,18 @@ public class FactoryBeanTest {
     @Autowired
     private ApplicationContext context;
 
+    @Autowired
+    private MyBean myBean2;
+
     @Test
     public void test() {
+
         MyBean myBean = (MyBean) context.getBean("myBean");
         System.out.println(myBean.getMessage());
 
         MyBean myBean1 = (MyBean) context.getBean("&myBean");
         System.out.println(myBean1.getMessage());
         System.out.println(myBean.equals(myBean1));
+        System.out.println(myBean2);
     }
 }

@@ -1,12 +1,10 @@
 package com.zkb.springredisstudy.controller;
 
-import com.zkb.springredisstudy.bean.MyBean;
+import com.zkb.springredisstudy.dynamic.cglib.basedynamic.Log;
 import com.zkb.springredisstudy.redis.annotation.RedisLock;
 import com.zkb.springredisstudy.service.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -18,16 +16,8 @@ public class TestController {
     @Autowired
     private KafkaService kafkaService;
 
-    private MyBean myBean;
-
-    @Autowired
-    private void setMyBean(MyBean myBean) {
-        this.myBean = myBean;
-    }
-
     @RedisLock(key = "test")
     @GetMapping("/test")
-
     public String test() {
         return "hello world";
     }
@@ -47,7 +37,13 @@ public class TestController {
 
     @GetMapping("/topics")
     public Set<String> getTopics() throws ExecutionException, InterruptedException {
-        this.setMyBean(null);
         return kafkaService.getAllTopics();
+    }
+
+    @PostMapping("/logTest")
+    @Log
+    public UserInfo getLogs(@RequestBody UserInfo userInfo) {
+        userInfo.setName("hello world");
+        return userInfo;
     }
 }
